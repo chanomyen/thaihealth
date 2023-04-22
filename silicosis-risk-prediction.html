@@ -17,27 +17,27 @@
                 <h1 class="text-center">ประเมินความเสี่ยงสุขภาพผู้ประกอบอาชีพแกะสลักหิน</h1>
             </div>
             <div class="card-body">
-                <form>
+                <form id="silicosis_form">
                     <div class="input-group mb-3">
                         <span class="input-group-text">ปริมาณความเข้มฝุ่นซิลิกา</span>
-                        <input type="number" class="form-control" id="dust_density" name="dust_density" required>
+                        <input type="number" step="0.001" class="form-control" id="dust_density" name="dust_density" required>
                         <span class="input-group-text">mg/m<sup>3</sup></span>
                     </div>
                     <div class="input-group mb-3">
                         <span for="work-hours" class="input-group-text">ทำงานวันละ</span>
-                        <input type="number" class="form-control" id="work-hours" name="work_hours" required>
+                        <input type="number" class="form-control" id="work_hours" name="work_hours" required>
                         <span for="work-hours" class="input-group-text">ชั่วโมง</span>
                     </div>
                     <div class="input-group mb-3">
                         <span for="has-disease" class="input-group-text">โรคประจำตัว</span>
-                        <select class="form-select" id="has-disease" name="has_disease" required>
-                            <option value="0">ไม่มีโรคประจำตัว</option>
-                            <option value="1">มีโรคประจำตัว</option>
+                        <select class="form-select" id="has_disease" name="has_disease" required>
+                            <option value=0>ไม่มีโรคประจำตัว</option>
+                            <option value=1>มีโรคประจำตัว</option>
                         </select>
                     </div>
                     <div class="input-group mb-3">
                         <span for="work-location" class="input-group-text">สถานที่ทำงาน</span>
-                        <select class="form-select" id="work-location" name="work_location" required>
+                        <select class="form-select" id="work_location" name="work_location" required>
                             <option value="0">แยกจากที่พักอาศัย</option>
                             <option value="1">บริเวณเดียวกับที่พักอาศัย</option>
                         </select>
@@ -60,28 +60,4 @@
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
 
-    <script>
-        const form = document.querySelector('form');
-      
-        form.addEventListener('submit', function(event) {
-          event.preventDefault(); // prevent the default form submission
-      
-          const data = new FormData(form); // create a FormData object from the form inputs
-      
-          const query = new URLSearchParams(data).toString(); // convert the FormData object to a URL-encoded query string
-      
-          const url = `http://localhost/8801/predic?${query}`; // append the query string to the URL
-      
-          fetch(url)
-          .then(response => {
-            console.log('Success:', response);
-            // handle the successful response from the server here
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            // handle any errors that occur during the request here
-          });
-        });
-      </script>
-      
-      
+<script src="silicosis-risk.js"></script>
