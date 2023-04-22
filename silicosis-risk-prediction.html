@@ -20,7 +20,7 @@
                 <form>
                     <div class="input-group mb-3">
                         <span class="input-group-text">ปริมาณความเข้มฝุ่นซิลิกา</span>
-                        <input type="number" class="form-control" id="dust" name="dust" required>
+                        <input type="number" class="form-control" id="dust_density" name="dust_density" required>
                         <span class="input-group-text">mg/m<sup>3</sup></span>
                     </div>
                     <div class="input-group mb-3">
@@ -62,21 +62,17 @@
 
     <script>
         const form = document.querySelector('form');
-        
+      
         form.addEventListener('submit', function(event) {
           event.preventDefault(); // prevent the default form submission
-        
+      
           const data = new FormData(form); // create a FormData object from the form inputs
-          
-          const json = JSON.stringify(Object.fromEntries(data)); // convert the FormData object to a JSON string
-          
-          fetch('http://localhost/8801/predic', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: json // send the JSON string as the request body
-          })
+      
+          const query = new URLSearchParams(data).toString(); // convert the FormData object to a URL-encoded query string
+      
+          const url = `http://localhost/8801/predic?${query}`; // append the query string to the URL
+      
+          fetch(url)
           .then(response => {
             console.log('Success:', response);
             // handle the successful response from the server here
@@ -87,4 +83,5 @@
           });
         });
       </script>
+      
       
