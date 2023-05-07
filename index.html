@@ -20,11 +20,11 @@
                 <form>
                     <div class="input-group mb-3">
                         <span for="firstname" class="input-group-text">ชื่อ</span>
-                        <input type="text" class="form-control" id="firstname" name="firstname" required>
+                        <input type="text" class="form-control" id="firstname" name="firstname" value="ชานนท์" required>
                     </div>
                     <div class="input-group mb-3">
                         <span for="lastname" class="input-group-text">สกุล</span>
-                        <input type="text" class="form-control" id="lastname" name="lastname" required>
+                        <input type="text" class="form-control" id="lastname" name="lastname" value="เสริมผล" required>
                     </div>
                     <div class="mb-3">
                         <div class="row">
@@ -40,19 +40,19 @@
                             <div class="col">
                                 <div class="input-group">
                                     <span for="age" class="input-group-text">อายุ</span>
-                                    <input type="number" class="form-control" id="age" name="age" required>
+                                    <input type="number" class="form-control" id="age" name="age" value=51 required>
                                     <span class="input-group-text">ปี</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <span for="address" class="input-group-text">ที่อยู่</span>
-                        <textarea class="form-control" id="address" rows="3"></textarea>
+                        <span for="homeAddress" class="input-group-text">ที่อยู่</span>
+                        <textarea class="form-control" id="homeAddress" rows="3">หลายที่</textarea>
                     </div>
                     <div class="input-group mb-3">
                         <span for="phone" class="input-group-text">โทรศัพท์</span>
-                        <input type="number" class="form-control" id="phone" name="phone" required>
+                        <input type="number" class="form-control" id="phone" name="phone" value="0811231234" required>
                     </div>
                     <div class="mb-3">
                         <div class="col">
@@ -63,29 +63,14 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">ลงบ่อหิน</label>
+                                        <input class="form-check-input" type="checkbox" value="" id="stonePond">
+                                        <label class="form-check-label" for="stonePond">ลงบ่อหิน</label>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                        <label class="form-check-label" for="flexCheckChecked">ตัดหิน</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                        <label class="form-check-label" for="flexCheckChecked">ต๊อกหิน</label>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                        <label class="form-check-label" for="flexCheckChecked">ผ่าหิน</label>
+                                        <input class="form-check-input" type="checkbox" value="" id="cutStone">
+                                        <label class="form-check-label" for="cutStone">ตัดหิน</label>
                                     </div>
                                 </div>
                             </div>
@@ -93,8 +78,14 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                        <label class="form-check-label" for="flexCheckChecked">แกะสลักหิน</label>
+                                        <input class="form-check-input" type="checkbox" value="" id="tockStone">
+                                        <label class="form-check-label" for="tockStone">ต๊อกหิน</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="ripStone">
+                                        <label class="form-check-label" for="ripStone">ผ่าหิน</label>
                                     </div>
                                 </div>
                             </div>
@@ -102,10 +93,19 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                        <label class="form-check-label" for="flexCheckChecked">อื่น ๆ (ระบุ)</label>
+                                        <input class="form-check-input" type="checkbox" value="" id="carveStone">
+                                        <label class="form-check-label" for="carveStone">แกะสลักหิน</label>
                                     </div>
-                                    <input class="form-control" type="text" value="" id="flexCheckChecked">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="otherWorkType">
+                                        <label class="form-check-label" for="otherWorkType">อื่น ๆ (ระบุ)</label>
+                                    </div>
+                                    <input class="form-control" type="text" value="" id="otherWorkTypeValue" disabled>
                                 </div>
                             </div>
                         </div>
@@ -113,14 +113,19 @@
                     
                     <div class="input-group mb-3">
                         <span class="input-group-text">ประสบการณ์ทำอาชีพแกะสลักหิน</span>
-                        <input type="text" class="form-control" id="experience" name="experience" required>
+                        <input type="text" class="form-control" id="experience" name="experience" value=1 required>
                         <span class="input-group-text">ปี</span>
                     </div>
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-warning btn-lg">บันทึกข้อมูล</button>
+                        <button id="submitBtn" type="submit" class="btn btn-warning btn-lg">บันทึกข้อมูล</button>
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+    <div class="container mt-3" style="max-width: 540px;">
+        <div class="d-grid gap-2">
+            <button id="burl" type="submit" class="btn btn-primary btn-lg">TEST</button>
         </div>
     </div>
 </body>
@@ -133,3 +138,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
+<script src="silicosis-register.js"></script>
