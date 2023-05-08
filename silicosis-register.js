@@ -55,6 +55,7 @@ userRegisterForm.addEventListener('submit', async (event) => {
             console.log('Success:', response);
             submitBtn.innerHTML = "เสร็จสิ้น";
             submitBtn.className = "btn btn-success btn-lg";
+            goToAssessmentPage();
             // handle the successful response from the server here
         })
         .catch(error => {
@@ -91,6 +92,13 @@ async function isRegisted(userId) {
         });
 }
 
+function goToAssessmentPage() {
+    const baseUrl = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+    const nextPage = `${baseUrl}/silicosis-risk-prediction.html`
+    console.log(nextPage);
+    window.location.replace(nextPage);
+}
+
 window.onload = async function () {
     console.log("On load!!!")
     loadLIFF();
@@ -108,10 +116,7 @@ window.onload = async function () {
         .then(data => {
             console.log(data.exists);
             if (data.exists) {
-                const baseUrl = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
-                const nextPage = `${baseUrl}/silicosis-risk-prediction.html`
-                console.log(nextPage);
-                window.location.replace(nextPage);
+                goToAssessmentPage();
             }
         })
         .catch(error => console.error(error));
