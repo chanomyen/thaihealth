@@ -43,7 +43,6 @@ userRegisterForm.addEventListener('submit', async (event) => {
     submitBtn.innerHTML = "กำลังส่งข้อมูล...";
     submitBtn.disabled = true;
     submitBtn.className = "btn btn-info btn-lg";
-    const baseUrl = window.location.origin.split(":")[0];
     const url = "https://asia-southeast1-thai-health-x.cloudfunctions.net/api/user/"
     fetch(url, {
         method: "POST",
@@ -82,8 +81,14 @@ function loadLIFF() {
     }
 }
 
-function isRegisted(userId) {
-    return false;
+async function isRegisted(userId) {
+    const url = `https://asia-southeast1-thai-health-x.cloudfunctions.net/api/user/?userId=${userId}`
+    return fetch(url, {
+        method: "GET"
+    })
+        .then(response => {
+            return response.json()
+        });
 }
 
 window.onload = async function () {
@@ -99,4 +104,15 @@ window.onload = async function () {
 
     const profile = await liff.getProfile();
     lineProfile = profile;
+    isRegisted(lineProfile.userId)
+        .then(data => {
+            console.log(data.exists);
+            if (data.exists) {
+                const baseUrl = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+                const nextPage = `${baseUrl}/silicosis-risk-prediction.html`
+                console.log(nextPage);
+                window.location.replace(nextPage);
+            }
+        })
+        .catch(error => console.error(error));
 };
