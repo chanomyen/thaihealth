@@ -44,7 +44,7 @@ userRegisterForm.addEventListener('submit', async (event) => {
     submitBtn.disabled = true;
     submitBtn.className = "btn btn-info btn-lg";
     const baseUrl = window.location.origin.split(":")[0];
-    const url = "http://localhost:5001/thai-health-x/asia-southeast1/api/user/"
+    const url = "https://asia-southeast1-thai-health-x.cloudfunctions.net/api/user/"
     fetch(url, {
         method: "POST",
         headers: {
@@ -66,12 +66,12 @@ userRegisterForm.addEventListener('submit', async (event) => {
         });
 });
 
-const burlBtn = document.getElementById("burl");
-burlBtn.addEventListener("click", () => {
-    // console.log(document.getElementById("homeAddress").value);
+// const burlBtn = document.getElementById("burl");
+// burlBtn.addEventListener("click", () => {
+//     // console.log(document.getElementById("homeAddress").value);
 
-    submitBtn.innerHTML = "กำลังส่งข้อมูล...";
-});
+//     submitBtn.innerHTML = "กำลังส่งข้อมูล...";
+// });
 
 function loadLIFF() {
     if (!window.LIFF) {
@@ -82,7 +82,12 @@ function loadLIFF() {
     }
 }
 
+function isRegisted(userId) {
+    return false;
+}
+
 window.onload = async function () {
+    console.log("On load!!!")
     loadLIFF();
     await liff.init({ liffId: "1660957751-q2MDKokx" });
     if (liff.isLoggedIn()) {
