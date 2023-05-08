@@ -116,6 +116,7 @@ window.onload = async function () {
         .then(data => {
             console.log(data.exists);
             if (data.exists) {
+                console.log("Go to next!");
                 goToAssessmentPage();
             }
         })
