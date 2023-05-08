@@ -95,9 +95,10 @@ async function isRegisted(userId) {
 function goToAssessmentPage() {
     let baseUrl = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
     if (baseUrl.includes("github")) {
-        baseUrl = `${baseUrl}/thaihealth/`
+        baseUrl = `${baseUrl}/thaihealth`;
+        console.log("GITHUB pages");
     }
-    const nextPage = `${baseUrl}/silicosis-risk-prediction.html`
+    const nextPage = `${baseUrl}/silicosis-risk-prediction.html`;
     console.log(nextPage);
     window.location.replace(nextPage);
 }
