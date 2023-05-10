@@ -75,11 +75,7 @@ window.onload = function () {
         dataset.value = level;
     });
     document.getElementById("labelDisplay").innerHTML = `${levels[level]}`;
-    document.getElementById("labelDisplay").classList.add(`text-bg-${classLabels[level]}`);
     document.getElementById("displayCard").classList.add(`text-bg-${classLabels[level]}`);
-    // document.getElementById("displayCardHeader").classList.add(`border-${classLabels[level]}`);
-    // document.getElementById("displayCardBody").classList.add(`border-${classLabels[level]}`);
-    // document.getElementById("displayCardFooter").classList.add(`border-${classLabels[level]}`);
     document.getElementById("cardContent").innerHTML = recommendations[level];
     window.myGauge.update();
 };
