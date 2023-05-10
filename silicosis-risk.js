@@ -20,6 +20,16 @@ function calculateLevel(riskScore) {
 
 const severities = ['ไม่มีนัยสำคัญ', 'ต่ำ', 'ปานกลาง', 'สูง', 'สูงมาก'];
 
+function goToResultPage(level) {
+    let baseUrl = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+    if (baseUrl.includes("github")) {
+        baseUrl = `${baseUrl}/thaihealth`;
+    }
+    const nextPage = `${baseUrl}/result.html?level=${level}`;
+    console.log(nextPage);
+    window.location.replace(nextPage);
+}
+
 const silicosisRiskForm = document.querySelector('form');
 silicosisRiskForm.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -32,5 +42,6 @@ silicosisRiskForm.addEventListener('submit', async (event) => {
     const riskScore = calculateRisk(dustDensity, workHours, hasDisease, workLocation);
     const riskLevel = calculateLevel(riskScore);
     const alertMessage = `score: ${riskScore}\nlevel: ${riskLevel}\ndisplay: ${severities[riskLevel]}`
-    alert(alertMessage);
+    // alert(alertMessage);
+    goToResultPage(riskLevel);
 });

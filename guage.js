@@ -87,3 +87,14 @@ function getLevel() {
     const level = urlParams.get('level');
     return level;
 }
+
+const infographicButton = document.querySelector('button');
+infographicButton.addEventListener('click', async (event) => {
+    let baseUrl = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+    if (baseUrl.includes("github")) {
+        baseUrl = `${baseUrl}/thaihealth`;
+    }
+    const nextPage = `${baseUrl}/infographic.html`;
+    console.log(nextPage);
+    window.location.replace(nextPage);
+});
