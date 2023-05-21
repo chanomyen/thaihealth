@@ -1,11 +1,39 @@
 const levels = ["ไม่มีนัยสำคัญ", "ต่ำ", "ปานกลาง", "สูง!", "สูงมาก!"]
 const classLabels = ["info", "success", "warning", "warning", "danger"]
 const recommendations = [
-    "โปรดควบคุมปริมาณฝุ่นและลดเวลาในการทำงาน",
-    "โปรดควบคุมปริมาณฝุ่นและลดเวลาในการทำงาน",
-    "โปรดควบคุมปริมาณฝุ่นและลดเวลาในการทำงาน",
-    "โปรดควบคุมปริมาณฝุ่นและลดเวลาในการทำงาน",
-    "โปรดควบคุมปริมาณฝุ่นและลดเวลาในการทำงาน"
+    [
+        "•	ติดตามเฝ้าระวังประเมินความเสี่ยงทางสุขภาพทุก ๆ 6 เดือน",
+        "•	สวมใส่หน้ากากป้องกันฝุ่นชนิด N95 ขึ้นไป"
+
+    ],
+    [
+        "•	ติดตามเฝ้าระวังประเมินความเสี่ยงทางสุขภาพทุก ๆ 3 เดือน",
+        "•	สวมใส่หน้ากากป้องกันฝุ่นชนิด N95 ขึ้นไป"
+
+    ],
+    [
+        "•	ปิดครอบแหล่งกำเนิดฝุ่น",
+        "•	เปิดใช้ระบบน้ำฉีดพ่นขณะทำงาน",
+        "•	ปรับลดชั่วโมงการทำงาน",
+        "•	สวมใส่หน้ากากป้องกันฝุ่นชนิด N95 ขึ้นไป",
+
+    ],
+    [
+        "•	ปิดครอบแหล่งกำเนิดฝุ่น",
+        "•	เปิดใช้ระบบน้ำฉีดพ่นขณะทำงาน",
+        "•	ติดตาม ตรวจวัดปริมาณความเข้มข้นฝุ่นซิลิกา",
+        "•	ปรับลดชั่วโมงการทำงาน",
+        "•	สวมใส่หน้ากากป้องกันฝุ่นชนิด N95 ขึ้นไป",
+        "•	จัดสถานที่ทำงานให้ห่างจากที่พักอาศัย"
+    ],
+    [
+        "•  ปิดครอบแหล่งกำเนิดฝุ่น",
+        "•  เปิดใช้ระบบน้ำฉีดพ่นขณะทำงาน",
+        "•  ติดตาม ตรวจวัดปริมาณความเข้มข้นฝุ่นซิลิกา",
+        "•  ปรับลดชั่วโมงการทำงาน",
+        "•  สวมใส่หน้ากากป้องกันฝุ่นชนิด N95 ขึ้นไป",
+        "•  จัดสถานที่ทำงานให้ห่างจากที่พักอาศัย"
+    ]
 ]
 
 var barData = function () {
@@ -76,7 +104,24 @@ window.onload = function () {
     });
     document.getElementById("labelDisplay").innerHTML = `${levels[level]}`;
     document.getElementById("displayCard").classList.add(`text-bg-${classLabels[level]}`);
-    document.getElementById("cardContent").innerHTML = recommendations[level];
+    const cardHead = document.getElementById("cardContentHead");
+    cardHead.classList.add(`list-group-item-${classLabels[level]}`);
+    if (level >= 2){
+        cardHead.innerHTML = "ควรเร่งดำเนินการลดความเสี่ยง";
+    } else {
+        cardHead.innerHTML = "ข้อแนะนำ";
+    }
+    
+    const contentList = document.getElementById('contentList');
+    recommendations[level].forEach(element => {
+        const newContent = document.createElement('li');
+        newContent.textContent = element;
+        newContent.classList.add('list-group-item');
+        newContent.classList.add('d-flex');
+        newContent.classList.add('justify-content-between');
+        newContent.classList.add('align-items-start');
+        contentList.appendChild(newContent);
+    });
     window.myGauge.update();
 };
 
