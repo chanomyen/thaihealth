@@ -30,18 +30,33 @@ function goToResultPage(level) {
     window.location.replace(nextPage);
 }
 
+async function getRiskLevel(dustDensity, workHours, hasDisease, workLocation) {
+    const baseUrl = 'https://asia-southeast1-thai-health-x.cloudfunctions.net/api/silicosis/riskLevel';
+    const url = new URL(baseUrl);
+    url.searchParams.append('dustDensity', dustDensity);
+    url.searchParams.append('workHours', workHours);
+    url.searchParams.append('hasDisease', hasDisease);
+    url.searchParams.append('workLocation', workLocation);
+    return fetch(url, {
+        method: "GET",
+    })
+        .then(response => {
+            return response.json()
+        }
+        );
+}
+
 const silicosisRiskForm = document.querySelector('form');
 silicosisRiskForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    
+
     const dustDensity = document.getElementById('dust_density').value;
     const workHours = document.getElementById('work_hours').value;
     const hasDisease = document.getElementById('has_disease').value;
     const workLocation = document.getElementById('work_location').value;
 
-    const riskScore = calculateRisk(dustDensity, workHours, hasDisease, workLocation);
-    const riskLevel = calculateLevel(riskScore);
-    const alertMessage = `score: ${riskScore}\nlevel: ${riskLevel}\ndisplay: ${severities[riskLevel]}`
-    // alert(alertMessage);
-    goToResultPage(riskLevel);
+    // const riskScore = calculateRisk(dustDensity, workHours, hasDisease, workLocation);
+    // const riskLevel = calculateLevel(riskScore);
+    const response = await getRiskLevel(dustDensity, workHours, hasDisease, workLocation);
+    goToResultPage(response.riskLevel);
 });
