@@ -18,6 +18,14 @@
             <div class="card-body">
                 <form>
                     <div class="input-group mb-3">
+                        <span for="namePrefix" class="input-group-text">คำนำหน้าชื่อ</span>
+                        <select class="form-select" id="namePrefix" name="namePrefix" required>
+                            <option value="นาย">นาย</option>
+                            <option value="นาง">นาง</option>
+                            <option value="นางสาว">นางสาว</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
                         <span for="firstname" class="input-group-text">ชื่อ</span>
                         <input type="text" class="form-control" id="firstname" name="firstname" value="" required>
                     </div>
@@ -46,12 +54,47 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <span for="homeAddress" class="input-group-text">ที่อยู่</span>
-                        <textarea class="form-control" id="homeAddress" rows="3"></textarea>
+                        <span for="nationality" class="input-group-text">สัญชาติ</span>
+                        <select class="form-select" id="nationality" name="nationality" required>
+                            <option value="ไทย">ไทย</option>
+                            <option value="ลาว">ลาว</option>
+                            <option value="เมียนมาร์">เมียนมาร์</option>
+                            <option value="อื่น ๆ">อื่น ๆ</option>
+                        </select>
                     </div>
                     <div class="input-group mb-3">
                         <span for="phone" class="input-group-text">โทรศัพท์</span>
                         <input type="number" class="form-control" id="phone" name="phone" value="" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span for="homeAddress" class="input-group-text">ที่อยู่ปัจจุบัน</span>
+                        <textarea class="form-control" id="homeAddress" rows="3"></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span for="liveTime" class="input-group-text">ระยะเวลาที่อาศัยในพื้นที่</span>
+                        <input type="number" class="form-control" id="liveTime" name="liveTime" value="0">
+                        <span class="input-group-text">ปี</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span for="workLocationName" class="input-group-text">ชื่อสถานที่ทำงาน</span>
+                        <input type="text" class="form-control" id="workLocationName" name="workLocationName" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="position">ทีตั้งที่ทำงาน</label>
+                        <div class="row" id="position" name="position">
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <span for="lat" class="input-group-text">Lat</span>
+                                    <input type="number" class="form-control" id="lat" name="lat" value="0">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <span for="long" class="input-group-text">Long</span>
+                                    <input type="number" class="form-control" id="long" name="long" value="0">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <div class="col">
@@ -109,11 +152,32 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="input-group mb-3">
+                        <span for="work-hours" class="input-group-text">ทำงานวันละ</span>
+                        <input type="number" class="form-control" id="work_hours" name="work_hours" required>
+                        <span for="work-hours" class="input-group-text">ชั่วโมง</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span for="work-days" class="input-group-text">ทำงานสัปดาห์ละ</span>
+                        <input type="number" class="form-control" id="work_days" name="work_days" required>
+                        <span for="work-days" class="input-group-text">วัน</span>
+                    </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">ประสบการณ์ทำอาชีพแกะสลักหิน</span>
                         <input type="text" class="form-control" id="experience" name="experience" value=0 required>
                         <span class="input-group-text">ปี</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span for="healthBenefit" class="input-group-text">สิทธิ์รักษาพยาบาล</span>
+                        <select class="form-select" id="healthBenefit" name="healthBenefit" required>
+                            <option value="สิทธิข้าราชการ">สิทธิข้าราชการ</option>
+                            <option value="สิทธิประกันสังคม">สิทธิประกันสังคม</option>
+                            <option value="สิทธิบัตรทอง 30 บาท">สิทธิบัตรทอง 30 บาท</option>
+                            <option value="สิทธิบัตรประกันสุขภาพต่างด้าว">สิทธิบัตรประกันสุขภาพต่างด้าว</option>
+                            <option value="สิทธิ อ.ส.ม.">สิทธิ อ.ส.ม.</option>
+                            <option value="จ่ายเอง">จ่ายเอง</option>
+                            <option value="อื่น ๆ">อื่น ๆ</option>
+                        </select>
                     </div>
                     <div class="d-grid gap-2">
                         <button id="submitBtn" type="submit" class="btn btn-warning btn-lg">บันทึกข้อมูล</button>
