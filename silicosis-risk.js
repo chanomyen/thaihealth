@@ -50,7 +50,7 @@ function goToResultPage(level) {
         baseUrl = `${baseUrl}/thaihealth`;
     }
     const nextPage = `${baseUrl}/result.html?level=${level}`;
-    console.log(nextPage);
+    // console.log(nextPage);
     window.location.replace(nextPage);
 }
 
@@ -62,7 +62,7 @@ async function getRiskLevel(dustDensity, workHours, hasDisease, workLocation) {
     url.searchParams.append('workHours', workHours);
     url.searchParams.append('hasDisease', hasDisease);
     url.searchParams.append('workLocation', workLocation);
-    console.log(lineProfile.userId);
+    url.searchParams.append('lineId', lineProfile.userId);
     return fetch(url, {
         method: "GET",
     })
