@@ -110,7 +110,7 @@ window.onload = async function () {
         console.log("Logged In!");
     } else {
         console.log("Not logged In!");
-        // liff.login();
+        liff.login();
     }
 
     const profile = await liff.getProfile();
@@ -120,7 +120,7 @@ window.onload = async function () {
             console.log(data.exists);
             if (data.exists) {
                 console.log("Go to next!");
-                // goToAssessmentPage();
+                goToAssessmentPage();
             }
         })
         .catch(error => console.error(error));

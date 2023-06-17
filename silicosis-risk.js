@@ -55,8 +55,7 @@ function goToResultPage(level) {
 }
 
 async function getRiskLevel(dustDensity, workHours, hasDisease, workLocation) {
-    // const baseUrl = 'https://asia-southeast1-thai-health-x.cloudfunctions.net/api/silicosis/riskLevel';
-    const baseUrl = 'http://127.0.0.1:5001/thai-health-x/asia-southeast1/api/silicosis/riskLevel';
+    const baseUrl = 'https://asia-southeast1-thai-health-x.cloudfunctions.net/api/silicosis/riskLevel';
     const url = new URL(baseUrl);
     url.searchParams.append('dustDensity', dustDensity);
     url.searchParams.append('workHours', workHours);
