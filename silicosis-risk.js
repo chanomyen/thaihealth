@@ -20,6 +20,30 @@ function calculateLevel(riskScore) {
 
 const severities = ['ไม่มีนัยสำคัญ', 'ต่ำ', 'ปานกลาง', 'สูง', 'สูงมาก'];
 
+function loadLIFF() {
+    if (!window.LIFF) {
+        const liffScript = document.createElement('script');
+        liffScript.setAttribute('src', 'https://static.line-scdn.net/liff/edge/2.1/sdk.js');
+        liffScript.setAttribute('charset', 'utf-8');
+        document.body.appendChild(liffScript);
+    }
+}
+
+var lineProfile
+window.onload = async function () {
+    console.log("On load!!!")
+    loadLIFF();
+    await liff.init({ liffId: "1660957751-q2MDKokx" });
+    if (liff.isLoggedIn()) {
+        console.log("Logged In!");
+    } else {
+        console.log("Not logged In!");
+        liff.login();
+    }
+    const profile = await liff.getProfile();
+    lineProfile = profile
+}
+
 function goToResultPage(level) {
     let baseUrl = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
     if (baseUrl.includes("github")) {
@@ -31,12 +55,14 @@ function goToResultPage(level) {
 }
 
 async function getRiskLevel(dustDensity, workHours, hasDisease, workLocation) {
-    const baseUrl = 'https://asia-southeast1-thai-health-x.cloudfunctions.net/api/silicosis/riskLevel';
+    // const baseUrl = 'https://asia-southeast1-thai-health-x.cloudfunctions.net/api/silicosis/riskLevel';
+    const baseUrl = 'http://127.0.0.1:5001/thai-health-x/asia-southeast1/api/silicosis/riskLevel';
     const url = new URL(baseUrl);
     url.searchParams.append('dustDensity', dustDensity);
     url.searchParams.append('workHours', workHours);
     url.searchParams.append('hasDisease', hasDisease);
     url.searchParams.append('workLocation', workLocation);
+    console.log(lineProfile.userId);
     return fetch(url, {
         method: "GET",
     })
