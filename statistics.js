@@ -48,7 +48,7 @@ window.onload = async () => {
 
     // render data to the html elements
     new Chart(severityPortionChart, {
-        type: 'doughnut',
+        type: 'pie',
         data: severityPortionData
     });
 }
