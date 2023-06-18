@@ -24,11 +24,12 @@ const getStatisticsData = async () => {
 window.onload = async () => {
     // access to the html elements
     const severityPortionChart = document.getElementById('severityPortionChart');
+    const cummulativeLineChart = document.getElementById('cummulativeLineChart');
 
     // fetch data from server
     let statisticsData = {};
     await getStatisticsData()
-        .then( data => {
+        .then(data => {
             statisticsData = data.statisticsData;
         });
 
@@ -41,11 +42,61 @@ window.onload = async () => {
             hoverOffset: 4
         }]
     };
+    const cummulativeLineData = {
+        labels: ['February', 'March', 'April'],
+        datasets: [
+            {
+                type: 'line',
+                label: sererityObject.levels[0],
+                data: [0, 2, 3],
+                borderColor: sererityObject.colors[0],
+                fill: false,
+                tension: 0.1
+            },
+            {
+                type: 'line',
+                label: sererityObject.levels[1],
+                data: [0, 1, 2],
+                borderColor: sererityObject.colors[1],
+                fill: false,
+                tension: 0.1
+            },
+            {
+                type: 'line',
+                label: sererityObject.levels[2],
+                data: [0, 2, 3],
+                borderColor: sererityObject.colors[2],
+                fill: false,
+                tension: 0.1
+            },
+            {
+                type: 'line',
+                label: sererityObject.levels[3],
+                data: [7, 2, 3],
+                borderColor: sererityObject.colors[3],
+                fill: false,
+                tension: 0.1
+            },
+            {
+                type: 'line',
+                label: sererityObject.levels[4],
+                data: [5, 4, 15],
+                borderColor: sererityObject.colors[4],
+                fill: false,
+                tension: 0.1
+            }
+        ]
+    }
     // const userStatisticsData = statisticsData.userStatistics;
 
     // render data to the html elements
     new Chart(severityPortionChart, {
         type: 'pie',
         data: severityPortionData
+    });
+
+    new Chart(cummulativeLineChart, {
+        // type: 'line',
+        data: cummulativeLineData
     });
 }
