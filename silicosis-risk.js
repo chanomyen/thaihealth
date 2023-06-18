@@ -20,13 +20,37 @@ function calculateLevel(riskScore) {
 
 const severities = ['ไม่มีนัยสำคัญ', 'ต่ำ', 'ปานกลาง', 'สูง', 'สูงมาก'];
 
+function loadLIFF() {
+    if (!window.LIFF) {
+        const liffScript = document.createElement('script');
+        liffScript.setAttribute('src', 'https://static.line-scdn.net/liff/edge/2.1/sdk.js');
+        liffScript.setAttribute('charset', 'utf-8');
+        document.body.appendChild(liffScript);
+    }
+}
+
+var lineProfile
+window.onload = async function () {
+    console.log("On load!!!")
+    loadLIFF();
+    await liff.init({ liffId: "1660957751-q2MDKokx" });
+    if (liff.isLoggedIn()) {
+        console.log("Logged In!");
+    } else {
+        console.log("Not logged In!");
+        liff.login();
+    }
+    const profile = await liff.getProfile();
+    lineProfile = profile
+}
+
 function goToResultPage(level) {
     let baseUrl = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
     if (baseUrl.includes("github")) {
         baseUrl = `${baseUrl}/thaihealth`;
     }
     const nextPage = `${baseUrl}/result.html?level=${level}`;
-    console.log(nextPage);
+    // console.log(nextPage);
     window.location.replace(nextPage);
 }
 
@@ -37,6 +61,7 @@ async function getRiskLevel(dustDensity, workHours, hasDisease, workLocation) {
     url.searchParams.append('workHours', workHours);
     url.searchParams.append('hasDisease', hasDisease);
     url.searchParams.append('workLocation', workLocation);
+    url.searchParams.append('lineId', lineProfile.userId);
     return fetch(url, {
         method: "GET",
     })
