@@ -12,15 +12,12 @@ const chartTitle = {
 
 // Functions
 const getStatisticsData = async () => {
-    // return await fetch('http://localhost:3000/statistics')
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         return data;
-    //     });
-    return {
-        severitySummation: [30, 40, 50, 75, 121],
-        userStatistics: []
-    }
+    const baseUrl = 'https://asia-southeast1-thai-health-x.cloudfunctions.net/api/silicosis/statistics';
+    return await fetch(baseUrl)
+        .then(res => res.json())
+        .then(data => {
+            return data;
+        });
 }
 
 //// Executions state
@@ -32,7 +29,7 @@ window.onload = async () => {
     let statisticsData = {};
     await getStatisticsData()
         .then( data => {
-            statisticsData = data;
+            statisticsData = data.statisticsData;
         });
 
     const severityPortionData = {
