@@ -21,10 +21,16 @@ const getStatisticsData = async () => {
         });
 }
 
+// Chart initial
+function chartSetup() {
+
+}
+
 //// Executions state
 window.onload = async () => {
     // access to the html elements
     const severityPortionChart = document.getElementById('severityPortionChart');
+    const genderChart = document.getElementById('genderChart');
     const cummulativeLineChart = document.getElementById('cummulativeLineChart');
 
     // fetch data from server
@@ -33,7 +39,15 @@ window.onload = async () => {
         .then(data => {
             statisticsData = data.statisticsData;
         });
-
+    const genderData = {
+            labels: ["ชาย", "หญิง"],
+            datasets: [{
+                label: "จำนวน",
+                data: [35, 45],
+                backgroundColor: ["blue", "pink"],
+                hoverOffset: 4
+            }]
+        };
     const severityPortionData = {
         labels: sererityObject.levels,
         datasets: [{
@@ -94,6 +108,11 @@ window.onload = async () => {
     new Chart(severityPortionChart, {
         type: 'pie',
         data: severityPortionData
+    });
+
+    new Chart(genderChart, {
+        type: 'pie',
+        data: genderData
     });
 
     new Chart(cummulativeLineChart, {
