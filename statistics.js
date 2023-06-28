@@ -24,9 +24,10 @@ const getStatisticsData = async () => {
 // Chart initial
 const chartInitial = async () => {
     // data setup
-    
     const severityPortionChart = document.getElementById('severityPortionChart');
     const genderChart = document.getElementById('genderChart');
+    const ageChart = document.getElementById('ageChart');
+    const workTypeChart = document.getElementById('workTypeChart');
 
     // fetch data from server
     let statisticsData = {};
@@ -34,46 +35,45 @@ const chartInitial = async () => {
         .then(data => {
             statisticsData = data.statisticsData;
         });
+
     const genderData = {
-        labels: ["ชาย", "หญิง"],
+        labels: statisticsData.genderData.labels,
         datasets: [{
             label: "จำนวน",
-            data: [35, 45],
+            data: statisticsData.genderData.data,
             backgroundColor: severityObject.colors,
             hoverOffset: 4
         }]
     };
     const ageData = {
-        labels: ["18-30 ปี", "31-40 ปี", "41-50 ปี", "51-60 ปี"],
+        labels: statisticsData.ageData.labels,
         datasets: [{
             label: "จำนวน",
-            data: [4, 1, 0, 0],
+            data: statisticsData.ageData.data,
             backgroundColor: severityObject.colors,
             hoverOffset: 4
         }]
     };
     const workTypeData = {
-        labels: ["ลงบ่อหิน", "ตัดหิน", "ต๊อกหิน", "ผ่าหิน", "แกะสลักหิน"],
+        labels: statisticsData.workTypeData.labels,
         datasets: [{
             label: "จำนวน",
-            data: [2, 3, 3, 2, 1],
+            data: statisticsData.workTypeData.data,
             backgroundColor: severityObject.colors,
             hoverOffset: 4
         }]
     };
     const severityPortionData = {
-        labels: severityObject.levels,
+        labels: statisticsData.severityPortionData.labels,
         datasets: [{
             label: chartTitle.severityPortion,
-            data: statisticsData.severitySummation,
+            data: statisticsData.severityPortionData.data,
             backgroundColor: severityObject.colors,
             hoverOffset: 4
         }]
     };
-    // const userStatisticsData = statisticsData.userStatistics;
 
     // render data to the html elements
-
     new Chart(genderChart, {
         type: 'pie',
         data: genderData
