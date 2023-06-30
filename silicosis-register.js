@@ -10,7 +10,7 @@ isOtherWorkTypeCheckbox.addEventListener('change', () => {
 });
 
 const submitBtn = document.getElementById("submitBtn");
-
+submitBtn.disabled = true;
 const userRegisterForm = document.querySelector('form');
 userRegisterForm.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -66,6 +66,15 @@ userRegisterForm.addEventListener('submit', async (event) => {
         });
 });
 
+const policyCheckbox = document.getElementById("policyCheckbox");
+policyCheckbox.addEventListener('change', () => {
+    if (policyCheckbox.checked) {
+        submitBtn.disabled = false;
+    } else {
+        submitBtn.disabled = true;
+    }
+});
+
 // const burlBtn = document.getElementById("burl");
 // burlBtn.addEventListener("click", () => {
 //     // console.log(document.getElementById("homeAddress").value);
@@ -110,7 +119,7 @@ window.onload = async function () {
         console.log("Logged In!");
     } else {
         console.log("Not logged In!");
-        liff.login();
+        // liff.login();
     }
 
     const profile = await liff.getProfile();
@@ -120,7 +129,7 @@ window.onload = async function () {
             console.log(data.exists);
             if (data.exists) {
                 console.log("Go to next!");
-                goToAssessmentPage();
+                // goToAssessmentPage();
             }
         })
         .catch(error => console.error(error));
