@@ -139,7 +139,7 @@ infographicButton.addEventListener('click', async (event) => {
     if (baseUrl.includes("github")) {
         baseUrl = `${baseUrl}/thaihealth`;
     }
-    const nextPage = `${baseUrl}/infographic.html`;
+    const nextPage = `${baseUrl}/informations.html`;
     console.log(nextPage);
     window.location.replace(nextPage);
 });
