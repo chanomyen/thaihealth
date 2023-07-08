@@ -47,7 +47,7 @@
                             <div class="col">
                                 <div class="input-group">
                                     <span for="age" class="input-group-text">อายุ</span>
-                                    <input type="number" class="form-control" id="age" name="age" value=0 required>
+                                    <input type="number" class="form-control" id="age" name="age" required>
                                     <span class="input-group-text">ปี</span>
                                 </div>
                             </div>
@@ -64,11 +64,27 @@
                     </div>
                     <div class="input-group mb-3">
                         <span for="phone" class="input-group-text">โทรศัพท์</span>
-                        <input type="number" class="form-control" id="phone" name="phone" value="" required>
+                        <input type="number" class="form-control" id="phone" name="phone" value="">
                     </div>
                     <div class="input-group mb-3">
-                        <span for="homeAddress" class="input-group-text">ที่อยู่ปัจจุบัน</span>
-                        <textarea class="form-control" id="homeAddress" rows="3"></textarea>
+                        <span for="homeNo" class="input-group-text">บ้านเลขที่</span>
+                        <input type="text" class="form-control" id="homeNo" name="homeNo" value="">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span for="villageNo" class="input-group-text">หมู่ที่</span>
+                        <input type="text" class="form-control" id="villageNo" name="villageNo" value="">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span for="subDistrict" class="input-group-text">ตำบล</span>
+                        <input type="text" class="form-control" id="subDistrict" name="subDistrict" value="">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span for="district" class="input-group-text">อำเภอ</span>
+                        <input type="text" class="form-control" id="district" name="district" value="">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span for="province" class="input-group-text">จังหวัด</span>
+                        <input type="text" class="form-control" id="province" name="province" value="">
                     </div>
                     <div class="input-group mb-3">
                         <span for="liveTime" class="input-group-text">ระยะเวลาที่อาศัยในพื้นที่</span>
@@ -146,23 +162,23 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="otherWorkType">
+                                        <input class="form-check-input" type="checkbox" value="" id="otherWorkTypeBox">
                                         <label class="form-check-label" for="otherWorkType">อื่น ๆ (ระบุ)</label>
                                     </div>
-                                    <input class="form-control" type="text" value="" id="otherWorkTypeValue" disabled>
+                                    <input class="form-control" type="text" value="" id="otherWorkType" disabled>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <span for="work-hours" class="input-group-text">ทำงานวันละ</span>
-                        <input type="number" class="form-control" id="work_hours" name="work_hours" required>
-                        <span for="work-hours" class="input-group-text">ชั่วโมง</span>
+                        <span for="workHours" class="input-group-text">ทำงานวันละ</span>
+                        <input type="number" class="form-control" id="workHours" name="workHours" required>
+                        <span for="workHours" class="input-group-text">ชั่วโมง</span>
                     </div>
                     <div class="input-group mb-3">
-                        <span for="work-days" class="input-group-text">ทำงานสัปดาห์ละ</span>
-                        <input type="number" class="form-control" id="work_days" name="work_days" required>
-                        <span for="work-days" class="input-group-text">วัน</span>
+                        <span for="workDays" class="input-group-text">ทำงานสัปดาห์ละ</span>
+                        <input type="number" class="form-control" id="workDays" name="workDays" required>
+                        <span for="workDays" class="input-group-text">วัน</span>
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">ประสบการณ์ทำอาชีพแกะสลักหิน</span>
@@ -172,10 +188,10 @@
                     <div class="input-group mb-3">
                         <span for="healthBenefit" class="input-group-text">สิทธิ์รักษาพยาบาล</span>
                         <select class="form-select" id="healthBenefit" name="healthBenefit" required>
-                            <option value="สิทธิข้าราชการ">สิทธิข้าราชการ</option>
-                            <option value="สิทธิประกันสังคม">สิทธิประกันสังคม</option>
                             <option value="สิทธิบัตรทอง 30 บาท">สิทธิบัตรทอง 30 บาท</option>
                             <option value="สิทธิบัตรประกันสุขภาพต่างด้าว">สิทธิบัตรประกันสุขภาพต่างด้าว</option>
+                            <option value="สิทธิข้าราชการ">สิทธิข้าราชการ</option>
+                            <option value="สิทธิประกันสังคม">สิทธิประกันสังคม</option>
                             <option value="สิทธิ อ.ส.ม.">สิทธิ อ.ส.ม.</option>
                             <option value="จ่ายเอง">จ่ายเอง</option>
                             <option value="อื่น ๆ">อื่น ๆ</option>

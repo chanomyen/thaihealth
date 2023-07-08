@@ -1,5 +1,5 @@
-const isOtherWorkTypeCheckbox = document.getElementById("otherWorkType");
-const otherWorkTypeInput = document.getElementById("otherWorkTypeValue");
+const isOtherWorkTypeCheckbox = document.getElementById("otherWorkTypeBox");
+const otherWorkTypeInput = document.getElementById("otherWorkType");
 var lineProfile;
 isOtherWorkTypeCheckbox.addEventListener('change', () => {
     if (isOtherWorkTypeCheckbox.checked) {
@@ -14,27 +14,27 @@ submitBtn.disabled = true;
 const userRegisterForm = document.querySelector('form');
 userRegisterForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const isOtherWorkType = document.getElementById("otherWorkType").checked;
+    const isOtherWorkType = document.getElementById("otherWorkTypeBox").checked;
 
     let otherWorkTypeValue = "";
     if (isOtherWorkType) {
-        otherWorkTypeValue = document.getElementById("otherWorkTypeValue").value;
+        otherWorkTypeValue = document.getElementById("otherWorkType").value;
     }
 
     const data = new FormData(userRegisterForm); // create a FormData object from the form inputs
     const formDataObject = Object.fromEntries(data);
 
-    formDataObject.homeAddress = document.getElementById("homeAddress").value;
-
-    formDataObject.isCutStone = document.getElementById("cutStone").checked;
-    formDataObject.isStonePond = document.getElementById("stonePond").checked;
-    formDataObject.isTockStone = document.getElementById("tockStone").checked;
-    formDataObject.isRipStone = document.getElementById("ripStone").checked;
-    formDataObject.isCarveStone = document.getElementById("carveStone").checked;
-    formDataObject.otherWorkTypeValue = otherWorkTypeValue;
+    formDataObject.isCutStone = Number(document.getElementById("cutStone").checked);
+    formDataObject.isStonePond = Number(document.getElementById("stonePond").checked);
+    formDataObject.isTockStone = Number(document.getElementById("tockStone").checked);
+    formDataObject.isRipStone = Number(document.getElementById("ripStone").checked);
+    formDataObject.isCarveStone = Number(document.getElementById("carveStone").checked);
+    formDataObject.otherWorkType = otherWorkTypeValue;
 
     formDataObject.lineId = lineProfile.userId;
     formDataObject.lineName = lineProfile.displayName;
+    // formDataObject.lineId = "lineProfile.userId";
+    // formDataObject.lineName = "lineProfile.displayName";
 
     const json = JSON.stringify(formDataObject); // convert the FormData object to a JSON string
     console.log(json);
@@ -44,6 +44,7 @@ userRegisterForm.addEventListener('submit', async (event) => {
     submitBtn.disabled = true;
     submitBtn.className = "btn btn-info btn-lg";
     const url = "https://asia-southeast1-thai-health-x.cloudfunctions.net/api/user/"
+    // const url = "http://127.0.0.1:5001/thai-health-x/asia-southeast1/api/user/"
     fetch(url, {
         method: "POST",
         headers: {
